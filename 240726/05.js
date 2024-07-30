@@ -2,6 +2,7 @@
 
 //해당 문제를 forEach로 변경하여 풀어주세요
 let arr = [10, 20, 30];
+let arr3 = [];
 // 해당 로직을 작성하세요
 arr.forEach((data, idx) => {
 	arr[idx] = data * 10;

@@ -1,0 +1,11 @@
+{
+  "name": "240726",
+  "version": "1.0.0",
+  "description": "달리기반 실습 과제입니다.  \r 2일차에 배운 내용들을 토대로 풀 수 있도록 구성되어 있습니다.",
+  "main": "05.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

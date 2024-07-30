@@ -13,6 +13,8 @@ let obj2 = obj1; // obj1을 얕은 복사하는 코드로 작성해주세요
 console.log(`obj`, obj2);
 /* obj2에 d를 추가하는 코드를 작성해주세요. d는 4의 값을 가집니다. */
 obj2['d'] = 4;
+obj2.e = 5;
+
 /* 해당값 obj1, obj2의 값을 출력해주세요 */
 console.log(`obj1`, obj1);
 console.log(`obj`, obj2);
