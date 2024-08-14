@@ -45,9 +45,11 @@ class Tutee extends Person {
 		console.log(`저의 이름은 ${this.name}이고, ${this.age}살, 현재 ${this.study} 를 학습하고 있습니다`);
 	}
 }
-const tutee = new Tutee();
+const tutee = new Tutee('재상', 24, 'js');
+console.log(JSON.stringify(tutee, null, 4));
 tutee.info();
 // 6. Student 클래스가 Person 클래스의 하위 클래스인 확인하고, tutee 인스턴스가 Studnet 클래스의 인스턴스인지 확인하여 출력해보세요.
+console.log(junhyne.prototype instanceof Student);
 console.log(junhyne.prototype instanceof Person);
 console.log(student1.prototype instanceof Person);
 console.log(tutee.prototype instanceof Person);

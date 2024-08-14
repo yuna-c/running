@@ -15,10 +15,12 @@ console.log(obj1.getValue());
 const obj2 = {
 	method: function () {
 		console.log('첫번째 this : ', this);
-
+		console.log(`같니` + obj2 === this);
 		const innerMethod = () => {
 			setTimeout(function () {
 				console.log('두번째 this : ', this);
+				console.log(`같니` + obj2 === this);
+				console.log(this);
 			});
 		};
 		innerMethod();
