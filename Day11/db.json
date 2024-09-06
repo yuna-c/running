@@ -1,0 +1,82 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    },
+    {
+      "id": "3",
+      "title": "PUT 덮어쓰기",
+      "views": 1000
+    },
+    {
+      "id": "4",
+      "title": "PATCH 업데이트",
+      "views": 1000
+    },
+    {
+      "id": "52ac"
+    },
+    {
+      "id": "aee1"
+    },
+    {
+      "id": "01a4"
+    },
+    {
+      "id": "0cfb"
+    },
+    {
+      "id": "477d"
+    },
+    {
+      "id": "260b"
+    },
+    {
+      "id": "4461"
+    },
+    {
+      "id": "d79a"
+    },
+    {
+      "id": "aa1f"
+    },
+    {
+      "id": "4afb"
+    },
+    {
+      "id": "9edd"
+    },
+    {
+      "id": "2907"
+    },
+    {
+      "id": "20f1"
+    },
+    {
+      "id": "6f72",
+      "title": "강감찬`"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

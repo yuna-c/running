@@ -1,0 +1,178 @@
+// import { useEffect, useState } from "react";
+import {
+  QueryClient,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import "./App.css";
+import axios from "axios";
+import { useState } from "react";
+
+function App() {
+  const queryClient = useQueryClient();
+
+  /** api */
+  const getPosts = async () => {
+    const { data } = await axios.get("http://localhost:4000/posts");
+    return data;
+  };
+  const addPost = async (newPost) => {
+    await axios.post("http://localhost:4000/posts", {
+      title: newPost.title,
+      views: newPost.views,
+    });
+  };
+
+  /** useState */
+  const [title, setTitle] = useState("");
+  const [views, setViews] = useState(0);
+
+  /** mutation */
+  const addMutation = useMutation({
+    mutationFn: addPost,
+    onSuccess: () => {
+      alert("포스트 정보 입력이 완료되었습니다!!");
+      queryClient.invalidateQueries(["posts"]);
+    },
+  });
+
+  /** query */
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+  });
+
+  if (isLoading) {
+    return <div>로딩중입니다...!</div>;
+  }
+
+  if (isError) {
+    return <div>오류가 발생하였습니다...!!</div>;
+  }
+
+  return (
+    <div>
+      <h3>AXIOS TEST(메인 페이지)</h3>
+      <div>
+        <h4>입력폼</h4>
+        title :{" "}
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />{" "}
+        <br />
+        views :{" "}
+        <input value={views} onChange={(e) => setViews(e.target.value)} />{" "}
+        <br />
+        <button
+          onClick={() => {
+            addMutation.mutate({
+              title,
+              views,
+            });
+          }}
+        >
+          입력
+        </button>
+      </div>
+      {data.map(function (post) {
+        return (
+          <div key={post.id}>
+            <p>
+              제목 : {post.title} (뷰 : {post.views})
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export default App;
+// import { useEffect, useState } from "react";
+import {
+  QueryClient,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import "./App.css";
+import axios from "axios";
+import { useState } from "react";
+
+function App() {
+  const queryClient = useQueryClient();
+
+  /** api */
+  const getPosts = async () => {
+    const { data } = await axios.get("http://localhost:4000/posts");
+    return data;
+  };
+  const addPost = async (newPost) => {
+    await axios.post("http://localhost:4000/posts", {
+      title: newPost.title,
+      views: newPost.views,
+    });
+  };
+
+  /** useState */
+  const [title, setTitle] = useState("");
+  const [views, setViews] = useState(0);
+
+  /** mutation */
+  const addMutation = useMutation({
+    mutationFn: addPost,
+    onSuccess: () => {
+      alert("포스트 정보 입력이 완료되었습니다!!");
+      queryClient.invalidateQueries(["posts"]);
+    },
+  });
+
+  /** query */
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+  });
+
+  if (isLoading) {
+    return <div>로딩중입니다...!</div>;
+  }
+
+  if (isError) {
+    return <div>오류가 발생하였습니다...!!</div>;
+  }
+
+  return (
+    <div>
+      <h3>AXIOS TEST(메인 페이지)</h3>
+      <div>
+        <h4>입력폼</h4>
+        title :{" "}
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />{" "}
+        <br />
+        views :{" "}
+        <input value={views} onChange={(e) => setViews(e.target.value)} />{" "}
+        <br />
+        <button
+          onClick={() => {
+            addMutation.mutate({
+              title,
+              views,
+            });
+          }}
+        >
+          입력
+        </button>
+      </div>
+      {data.map(function (post) {
+        return (
+          <div key={post.id}>
+            <p>
+              제목 : {post.title} (뷰 : {post.views})
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export default App;
