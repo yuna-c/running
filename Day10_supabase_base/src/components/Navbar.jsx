@@ -1,17 +1,17 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { supabase } from '../supabaseClient'
-import { useContext } from 'react'
-import { UserContext } from '../context/UserContext'
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../supabaseClient";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
-  const navigate = useNavigate()
-  const { user } = useContext(UserContext)
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
   const handleSignOut = async () => {
-    await supabase.auth.signOut()
+    await supabase.auth.signOut();
 
-    alert('로그아웃 처리가 완료됐습니다. 메인페이지로 이동할께요.')
-    navigate('/')
-  }
+    alert("로그아웃 처리가 완료됐습니다. 메인페이지로 이동할께요.");
+    navigate("/");
+  };
 
   return (
     <nav>
@@ -40,9 +40,9 @@ const Navbar = () => {
           </>
         )}
       </ul>
-      {user ? <button onClick={handleSignOut}>로그아웃</button> : ''}
+      {user ? <button onClick={handleSignOut}>로그아웃</button> : ""}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

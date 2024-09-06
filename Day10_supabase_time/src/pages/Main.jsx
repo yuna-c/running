@@ -1,21 +1,21 @@
-import React, { useEffect, useState, useContext } from "react";
-import { supabase } from "../supabaseClient";
-import { UserContext } from "../context/UserContext";
+import React, { useEffect, useState, useContext } from 'react'
+import { supabase } from '../supabaseClient'
+import { UserContext } from '../context/UserContext'
 
 const Main = () => {
-  const [posts, setPosts] = useState([]);
-  const { user } = useContext(UserContext);
+  const [posts, setPosts] = useState([])
+  const { user } = useContext(UserContext)
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data } = await supabase.from("posts").select("*");
-      setPosts(data);
-    };
+      // 외부 통신(supabase)
+      const response = await supabase.from('posts').select('*')
 
-    fetchPosts();
-  }, []);
+      setPosts(response.data)
+    }
 
-  console.log("posts => ", posts);
+    fetchPosts()
+  }, [])
 
   return (
     <div>
@@ -26,17 +26,16 @@ const Main = () => {
           posts.map((post) => (
             <li key={post.id}>
               {post.title}
-              {user.id === post.user_id ? " [수정]" : ""}
+
+              {post.user_id === user.id ? '[수정]' : ''}
             </li>
           ))
         ) : (
-          <>
-            <p>등록된 글이 없습니다.</p>
-          </>
+          <p>등록된 글이 없습니다.</p>
         )}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main
